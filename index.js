@@ -57,9 +57,9 @@ app.post("/contact", authenticateToken, (req, res) => {
     
 });
 
-// Apply the validateSignup middleware only to the signup route
+
 app.post("/signup", validateSignup, (req, res) => {
-    // Handle signup logic
+    
     res.json({ message: "Signup successful" });
 });
 
