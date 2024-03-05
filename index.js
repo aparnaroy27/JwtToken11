@@ -4,18 +4,18 @@ const jwt = require("jsonwebtoken");
 const secretKey = "ThisismysecretKey@123";
 
 app.listen(3000, () => {
-    console.log("listening to port number 3000"); // Corrected port number in log message
+    console.log("listening to port number 3000"); 
 });
 
 app.use(express.json());
 
-// Middleware to log requests
+
 const logRequests = (req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 };
 
-// Middleware to authenticate token
+
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -29,7 +29,7 @@ const authenticateToken = (req, res, next) => {
     });
 };
 
-// Middleware for signup form
+
 const validateSignup = (req, res, next) => {
     const { username, email, password } = req.body;
 
@@ -40,7 +40,7 @@ const validateSignup = (req, res, next) => {
     next();
 };
 
-// Apply the logRequests middleware globally
+
 app.use(logRequests);
 
 // Routes
@@ -54,7 +54,7 @@ app.post("/contact", authenticateToken, (req, res) => {
     }
 
     console.log(req.body);
-    // Add your logic here
+    
 });
 
 // Apply the validateSignup middleware only to the signup route
